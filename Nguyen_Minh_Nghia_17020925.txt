@@ -1,0 +1,33 @@
+a)
+may 1:
+
+sudo adduser user01
+password : 12345
+
+sudo gedit /etc/ssh/sshd_config
+
+PubkeyAuthentication no
+PermitEmptyPasswords no
+PasswordAuthentication yes
+AllowUsers user01
+
+sudo systemctl restart sshd.service
+
+may2:
+
+ssh user01@10.10.211.209
+
+b)
+
+may1:
+
+ssh-keygen -t rsa
+ssh-copy-id -i /home/ccne/.ssh/id_rsa.pub nguyennghia@10.10.211.232
+ssh nguyennghia@10.10.211.232
+
+
+may2: 
+
+sudo gedit /etc/ssh/sshd_config
+PubkeyAuthentication no
+sudo systemctl restart sshd.service
